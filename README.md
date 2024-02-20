@@ -2,6 +2,10 @@
 
 Final Project Bootcamp-02
 
+Bootcamp ini masih dalam proses sampai bulan maret 2024
+jadi untuk update source codenya akan berakhir dibulan maret minggu ganjil pertama
+terimakasih..
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
