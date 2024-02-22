@@ -1,4 +1,8 @@
+import 'package:aplikasi_nonton_id/config/costum_colors.dart';
+import 'package:aplikasi_nonton_id/pages/home_page.dart';
 import 'package:aplikasi_nonton_id/pages/register_page.dart';
+import 'package:aplikasi_nonton_id/widgets/button_widget.dart';
+import 'package:aplikasi_nonton_id/widgets/textbutton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(28, 26, 41, 1),
+      backgroundColor: MainColors.backgrounColor,
       body: Column(
         children: [
           Expanded(
@@ -145,26 +149,7 @@ class _FormBody extends StatelessWidget {
                       ),
                     ),
                   ),
-                  TextButton(
-                    child: Text(
-                      'Daftar',
-                      style: GoogleFonts.openSans(
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RegisterPage(),
-                          ),
-                          (route) => false);
-                    },
-                  ),
+                  const TextButtonDaftar()
                 ],
               ),
             ],
@@ -180,25 +165,6 @@ class _FormAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 90.0,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-        ),
-        child: Text(
-          'Masuk',
-          style: GoogleFonts.openSans(
-            textStyle:
-                const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-          ),
-        ),
-        onPressed: () {},
-      ),
-    );
+    return const ButtonMasuk();
   }
 }

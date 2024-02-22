@@ -1,5 +1,4 @@
 import 'package:aplikasi_nonton_id/pages/splash_page.dart';
-
 import 'package:flutter/material.dart';
 
 

@@ -1,4 +1,6 @@
+import 'package:aplikasi_nonton_id/config/costum_colors.dart';
 import 'package:aplikasi_nonton_id/pages/login_page.dart';
+import 'package:aplikasi_nonton_id/widgets/textbutton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +10,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(28, 26, 41, 1),
+      backgroundColor:MainColors.backgrounColor,
       body: Column(
         children: [
           Expanded(
@@ -189,26 +191,7 @@ class _FormBody extends StatelessWidget {
                       ),
                     ),
                   ),
-                  TextButton(
-                    child: Text(
-                      'Masuk',
-                      style: GoogleFonts.openSans(
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ),
-                          (route) => false);
-                    },
-                  ),
+                  const TextButtonMasuk()
                 ],
               ),
             ],
