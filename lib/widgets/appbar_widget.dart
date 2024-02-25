@@ -37,27 +37,24 @@ class LocationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin:const EdgeInsets.only(left: 20.0),
-        child: Row(
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.location_on_outlined, color: Colors.white),
-              onPressed: () {},
-            ),
-            Text(
-              'Lokasi Saya',
-              style: GoogleFonts.openSans(
-                textStyle: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(width: 25),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.location_on_outlined, color: Colors.white),
+          onPressed: () {},
         ),
-      ),
+        Text(
+          'Lokasi Saya',
+          style: GoogleFonts.openSans(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+            ),
+          ),
+        ),
+        const SizedBox(width: 25),
+      ],
     );
   }
 }
