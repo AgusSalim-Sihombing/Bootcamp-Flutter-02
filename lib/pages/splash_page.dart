@@ -1,6 +1,6 @@
 import 'package:aplikasi_nonton_id/pages/login_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -29,99 +29,70 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ShaderMask(
-          shaderCallback: (rect) => const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.black, Colors.transparent],
-          ).createShader(rect),
-          blendMode: BlendMode.darken,
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/splash.jpg'),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+    return Scaffold(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/images/splash.jpg',
+              fit: BoxFit.cover,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF1C1A29),
+                    Color.fromRGBO(28, 26, 41, 0.53),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
-        ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 200.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'NONTON',
-                      style: GoogleFonts.exo(
-                        textStyle: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
+            Positioned(
+              top: 150,
+              left: 0,
+              right: 0,
+              child: Image.asset('assets/images/logo.png'),
+            ),
+            const SizedBox(height: 20),
+            Positioned(
+              top: 300,
+              left: 0,
+              right: 0,
+              child: FutureBuilder<int>(
+                future: Future.delayed(const Duration(seconds: 3), () => 1),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    // Transition to the login page after the delay
+                    return const SizedBox(); // Replace with navigation widget if needed
+                  } else {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CircularProgressIndicator(),
+                        const SizedBox(height: 20.0),
+                        Text(
+                          'Loading...',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400),
                         ),
-                      ),
-                    ),
-                    Text(
-                      '\u25A0',
-                      style: GoogleFonts.exo(
-                        textStyle: const TextStyle(
-                          color: Color.fromRGBO(255, 222, 51, 1),
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      'ID',
-                      style: GoogleFonts.exo(
-                        textStyle: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w900,
-                          color: Color.fromRGBO(255, 222, 51, 1),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                      ],
+                    );
+                  }
+                },
               ),
-              Center(
-                child: FutureBuilder<int>(
-                  future: Future.delayed(const Duration(seconds: 3), () => 1),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      // Transition to the login page after the delay
-                      return const SizedBox(); // Replace with navigation widget if needed
-                    } else {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CircularProgressIndicator(),
-                          const SizedBox(height: 20.0),
-                          Text(
-                            'Loading...',
-                            style: GoogleFonts.openSans(
-                              textStyle: const TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-                  },
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
-      ],
+      ),
     );
   }
 }

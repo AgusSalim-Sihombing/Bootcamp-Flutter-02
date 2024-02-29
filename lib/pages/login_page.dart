@@ -1,6 +1,4 @@
 import 'package:aplikasi_nonton_id/config/costum_colors.dart';
-import 'package:aplikasi_nonton_id/pages/home_page.dart';
-import 'package:aplikasi_nonton_id/pages/register_page.dart';
 import 'package:aplikasi_nonton_id/widgets/button_widget.dart';
 import 'package:aplikasi_nonton_id/widgets/textbutton_widget.dart';
 import 'package:flutter/material.dart';

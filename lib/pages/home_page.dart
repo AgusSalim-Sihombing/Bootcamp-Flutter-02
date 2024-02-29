@@ -2,7 +2,9 @@ import 'package:aplikasi_nonton_id/config/costum_colors.dart';
 import 'package:aplikasi_nonton_id/data/promo_data.dart';
 import 'package:aplikasi_nonton_id/widgets/appbar_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -205,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                TextButton(
+                GestureDetector(
                   child: Text(
                     'Lihat semua >',
                     style: GoogleFonts.openSans(
@@ -216,53 +218,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onTap: (){},
                 )
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          CarouselSlider(
-            items: isShowing.map(
-                  (sedangTayangModel) => Container(
-                  width: 147,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromRGBO(134, 122, 210, 1),
-                    gradient:const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromRGBO(134, 122, 210, 1),
-                        Color.fromRGBO(134, 122, 210, 0.19),
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 7.0,
-                        spreadRadius: 2.0,
-                        offset: Offset(0.0, 0.0), // Offset ke bawah
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Image.asset(sedangTayangModel.imageUrl.toString()),
-                    ],
-                  ),
-                )
-            ).toList(),
-            options: CarouselOptions(
-              onPageChanged: (index, reason) {
-                setState(
-                      () {
-                    isShowingIndex = index;
-                  },
-                );
-              },
-            ),
-          ),
+
         ],
       ),
     );
