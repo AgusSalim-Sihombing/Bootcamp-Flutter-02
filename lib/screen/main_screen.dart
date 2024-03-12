@@ -1,7 +1,6 @@
 import 'package:aplikasi_nonton_id/screen/screen.dart';
 import 'package:flutter/material.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
