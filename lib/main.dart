@@ -1,6 +1,9 @@
-import 'package:aplikasi_nonton_id/pages/splash_page.dart';
+import 'package:aplikasi_nonton_id/constants/app_colors.dart';
+import 'package:aplikasi_nonton_id/constants/route_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import 'screen/screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,31 +14,58 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp.router(
+      title: 'Flutter Basic',
       theme: ThemeData(
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          color: Color.fromRGBO(28, 26, 41, 1),
-          foregroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.deepPurple,
+          brightness: Brightness.dark,
         ),
-        inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.redAccent,
-            ),
-          ),
-          errorStyle: TextStyle(color: Colors.red),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor:const Color.fromRGBO(134, 122, 210, 1),
-            foregroundColor:Colors.white,
-          ),
-        ),
+        scaffoldBackgroundColor: AppColors.background,
       ),
-      home:const SplashPage(),
+      routerConfig: GoRouter(
+        initialLocation: '/',
+        routes: [
+          GoRoute(
+            path: '/splash',
+            name: RouteConstant.splash,
+            builder: (BuildContext context, GoRouterState state) => const SplashScreen(),
+          ),
+          GoRoute(
+            path: '/login',
+            name: RouteConstant.login,
+            builder: (BuildContext context, GoRouterState state) => const LoginScreen(),
+          ),
+          GoRoute(
+            path: '/registration',
+            name: RouteConstant.registration,
+            builder: (BuildContext context, GoRouterState state) => const RegistrationScreen(),
+          ),
+          GoRoute(
+            path: '/',
+            name: RouteConstant.main,
+            builder: (BuildContext context, GoRouterState state) => const MainScreen(),
+            routes: [
+              GoRoute(
+                path: 'movies',
+                name: RouteConstant.movieList,
+                builder: (BuildContext context, GoRouterState state) => const MovieListScreen(),
+              ),
+              GoRoute(
+                path: 'movies/:movieId',
+                name: RouteConstant.movieDetail,
+                builder: (BuildContext context, GoRouterState state) {
+                  String movieId = state.pathParameters['movieId'] as String;
+                  return MovieDetailScreen(
+                    movieId: movieId,
+                  );
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
